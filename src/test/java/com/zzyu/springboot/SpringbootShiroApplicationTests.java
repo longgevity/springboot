@@ -1,4 +1,4 @@
-package com.example.springbootShiro;
+package com.zzyu.springboot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
