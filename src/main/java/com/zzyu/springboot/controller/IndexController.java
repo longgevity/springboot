@@ -1,9 +1,13 @@
 package com.zzyu.springboot.controller;
 
 import com.zzyu.springboot.util.redis.RedisUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -17,14 +21,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 
 @Controller
+@Api(description = "redis操作接口",value = "indexController")
 public class IndexController {
 
 
     @Autowired
     RedisUtil redisUtil;
 
-
-    @RequestMapping("testRedis")
+    @ApiOperation(value = "设置redis key Value", notes="返回value")
+    @RequestMapping(value = "testRedis", method=RequestMethod.GET)
     @ResponseBody
     public String TestRedis(String key,String value){
         redisUtil.set(key,value);
